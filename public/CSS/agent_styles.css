@@ -1,0 +1,151 @@
+/* agent css */
+
+#nav_data {
+  top: 0;
+  padding-right: 100%;
+  z-index: 3;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 3px solid;
+  border-color: #b9b9b9;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  top: 0;
+  position: fixed;
+  height: 4.5rem;
+  width: 100vw;
+  border-bottom: 2px solid;
+  border-color: rgb(188, 188, 188);
+}
+.home a{
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+}
+.header p {
+  margin-left: 5rem;
+  font-weight: lighter;
+}
+.header_set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_set p a{
+  color: black;
+  text-decoration: none;
+}
+.header_set p a:hover{
+  text-decoration: underline;
+}
+
+
+
+.agent_img{
+  margin-left: 2.1rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 3px;
+  margin-top: 5%;
+  border-radius: 1000px;
+  background-color: #000000;
+}
+
+.total_data{
+  padding: 0rem 5rem 5rem 5rem;
+  background-color: #ffffff;
+  border-radius: 2px;
+  margin-bottom: 5rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
+} 
+
+::placeholder { 
+  color: #8b8b8b;
+  opacity: 1; 
+}
+
+.row input{
+  border-radius: 2.5px;
+  padding: 0.6rem;
+  background: none;
+  border-width: 1px;
+}
+.bord {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.000005); 
+}
+
+.rotha {
+  background-color: #f4f4f4;
+  border-radius: 2px;
+}
+
+#agentproperty p {
+  max-width: 50%;
+}
+
+#agentproperty {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 70%;
+  background-color: #effff3;
+  border-radius: 3px;
+}
+
+.agent_property{
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-right: 0.4rem;
+  padding-left: 0.5rem;
+  background-color: #7d85e2;
+  border-radius: 2px;
+  margin-left: 260%;
+}
+
+.agent_property:hover {
+  background-color: #8d96ff;
+}
+.headings{
+  font-weight:100;
+  color: #6dbdff;
+}
+
+h5 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}  
+
+.todo {
+  background-color: #ffffff; 
+  border: 2px solid;
+  background-color: #7d85e2;
+  color: #ffffff; 
+  padding: 1rem 4.1rem 1rem 4.2rem; 
+  margin-left: 86.5%;
+  border-radius: 0.5rem;
+}
+
+.todo:hover {
+  background-color: #8f98ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#box{
+  border-color: #000000;
+  border-radius: 2px;
+}
+
+#photo{
+  width: 250px;
+  border-radius: 3px;
+  max-height: 20rem;
+}

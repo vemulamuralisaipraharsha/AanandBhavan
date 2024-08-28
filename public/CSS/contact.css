@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    padding:0;
+    margin:8% 0 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    top: 0;
+    position: fixed;
+    height: 4.5rem;
+    width: 100vw;
+    border-bottom: 2px solid;
+    border-color: rgb(188, 188, 188);
+}
+.home a{
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+.header p {
+    margin-left: 5rem;
+    font-weight: lighter;
+}
+.header_set {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_set p a{
+    color: black;
+    text-decoration: none;
+}
+.header_set p a:hover{
+    text-decoration: underline;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-gap: 3rem;
+}
+
+.item1 {
+    grid-column: 2 / 6;
+    height: 70vh;
+    border-color: rgb(0, 0, 0);
+}
+
+.item1 h1 {
+    color: #7cc2ff;
+    
+}
+
+.item1 p {
+    font-size: larger;
+    color: #959595;
+}
+.ip {
+    width: 100%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+    font-size: large;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    border-color: rgb(141, 141, 141);
+    color: #575757;
+}
+.ip:hover {
+    border-width: 3px;
+}
+
+.contact{
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    border: 2px solid;
+    border-color: #ffffff;
+    background-color: #7cc2ff;
+    border-radius: 3px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+}
+.submit p{
+    color: #ffffff;
+}
+.submit:hover{
+    cursor: pointer;
+    background-color: #0088ff;
+}
+.terms {
+    display: flex;
+    align-items: center;
+    font-size:small;
+}
+
+
+.item2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 3px;
+    grid-column: 7 / 10;
+    height: 77vh;
+    background-color: rgb(229, 229, 229);
+}
+.call h2{
+    color: #7cc2ff;
+}
+.call img{
+    width: 17px;
+    margin-right: 2px;
+
+}
+.location {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+.location h2{
+    color: #7cc2ff;
+    transform: translateY(5px);
+}
+.location img{
+    width: 17px;
+    margin-right: 2px;
+}
+.location p{
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+.service {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.service h2{
+    color: #7cc2ff;
+}
+
+.service p{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+}
+

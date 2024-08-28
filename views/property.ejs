@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Property</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/styles.css">
+  <link rel="stylesheet" href="CSS/agent_styles.css">
+  <link rel="stylesheet" href="CSS/property_styles.css">
+</head>
+
+
+<header class="header" id="hedd">
+  <p class="home"><a href="/">AanandBhavan</a></p>
+  <div class="header_set">
+      <p><a href="/">HOME</a></p>
+      <p><a href="/property">EXPLORE HOUSES</a></p>
+      <p><a href="/contact">CONTACT US</a></p>
+  </div>
+</header>
+<body class="buddy" style="font-family: Amazon Ember; margin-top: 1rem;">
+  <div class="filter-container">
+    <h2 style="margin-top: 8rem;">Filter Properties</h2>
+    <form id="property-filter-form" action = "/property" method="post">
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <%var maximum = 0;%>
+      <%for(var i = 0 ; i < property_data.length ; i++){%>
+        <%if(property_data[i].rent_sell_price >= maximum){%>
+          <%maximum = property_data[i].rent_sell_price;%>
+        <%}%>
+      <%}%>
+      <div class="slider-container">
+        <input type="range" class="range-slider" min="0" max="<%=maximum%>">
+        <div class="value"><%= (maximum/2)%></div>
+      </div>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <label for="sq-feet">Square Feet:</label>
+      <input type="number" name="min-sq-feet" placeholder="Min Sq Feet" style="margin-left: 1rem; margin-right: 0rem;"/>
+      <input type="number" name="sq_feet" placeholder="Max Sq Feet" />
+  
+      <label for="no_of_bedrooms">Number of Bedrooms:</label>
+      <select name="no_of_bedrooms">
+        <option value="">All</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+  
+      <label for="rent_sell">Rent/Sell:</label>
+      <select name="rent_sell">
+        <option value="">All</option>
+        <option value="Rent">Rent</option>
+        <option value="Sell">Sell</option>
+      </select>
+  
+      <label for="area">Area:</label>
+      <input type="text" name="area" placeholder="Area" />
+      <label for="property_type">Property Type:</label>
+      <select name="property_type">
+        <option value="">All</option>
+        <option value="House">House</option>
+        <option value="Plot">Plot</option>
+      </select>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <label for="current_status">AVAILABILITY :</label>
+      <select name="current_status">
+        <option value="">All</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <button type="submit" style="margin-left:450px; padding:1rem 3rem 1rem 3rem; background-color: #7cc2ff; border-radius: 1px;" class = "batta" onclick = "explode()">Apply Filter</button>
+    </form>
+  </div>
+  <!-- end of filter code -->
+  <%for(var i = 0 ; i < property_data.length; i++){%>
+    <div class = "card">
+      <%var insert = property_data[i];%>
+      <div class = 'row pakka' id = "box">
+        <div class = "col-md-3" >
+          <%var photo = insert.rent_sell + insert.property_type%>
+          <%if(photo === "RentHouse"){%>
+            <img src="/icons/house_rent.png" id = "photo" >
+        <%}else if(photo === "SellHouse"){%>
+            <img src="/icons/house_sale.png" id = "photo">
+        <%}else if(photo === "RentPlot" || photo === "Rentplot"){%>
+            <img src="/icons/app_rent.png" id = "photo">
+          <%}else{%>
+            <img src="/icons/app_sale.png" id = "photo">
+        <%}%>
+      </div>
+        <div class = "col-md-9 tete" >
+          <div class="row col-md-12">
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">ADDRESS<span style="font-size: large; font-weight: 500;" id = "A1">: <%=insert.address%></span></h3>
+            </div>
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">BHK  <span style="font-size: large; font-weight: 500;" id="A2">: <%=insert.no_of_bedrooms%></span></h3>          
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">SQ-FEET<span style="font-size: large; font-weight: 500;" id="A3">: <%=insert.sq_feet%></span></h3>
+            </div>
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">PRICE<span style="font-size: large; font-weight: 500;" id="A4">: <%=insert.rent_sell_price%></spa></h3>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">BUILT-YR <span style="font-size: large; font-weight: 500;" id="A5">: <%=insert.built_year%></span></h3>
+            </div>
+            <div class = "col-md-6">
+              <h3 style="font-weight: 500; font-size: 17px;">TYPE  <span style="font-size: large; font-weight: 500;" id="A6">:   <%=insert.property_type%></span></h3>
+            </div>   
+          </div>
+        </div>
+        <style>
+          .cardbtn {border-radius: 4px;}
+          :root {--motion-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6); --motion-duration: 0.3s;}
+          * {box-sizing: border-box;}
+          button {appearance: none; background: transparent; border: 0; color: #fff; cursor: pointer; font: inherit; font-weight: 500; line-height: 1; padding: 1em 1.5em; margin-left: 78rem; position: relative; transition: filter var(--motion-duration);}
+          button:hover {filter: brightness(1.1);}
+          button:active {filter: brightness(0.9);}
+          button > span {display: block; position: relative; transition: transform var(--motion-duration) var(--motion-ease); z-index: 1;}
+          button:hover > span {transform: scale(1.05);}
+          button:active > span {transform: scale(0.95);}
+          button > svg {fill: #7cc2ff; position: absolute; top: -5%; left: -5%; width: 110%; height: 110%;}
+          button > svg > path {transition: var(--motion-duration) var(--motion-ease);}
+        </style>
+        <div class = "conect_to_agent" style = "margin-bottom: 5rem;">
+          <button>
+            <span>Find Agent</span>
+            <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  <%}%>
+  <script>
+    var rangeSlider = document.querySelector(".range-slider");
+    var valueDisplay = document.querySelector(".value");
+    var slider_data = 0;
+    rangeSlider.addEventListener("input", function() {
+        slider_data = rangeSlider.value;
+        valueDisplay.textContent = this.value;
+        console.log(slider_data);
+    });
+    var final_submit = document.querySelector(".batta");
+    var dataToSend = {};
+    function explode(){
+      dataToSend["slider_data_key"] = slider_data;
+      console.log(dataToSend);
+      fetch("/property/max" , {
+            method : 'POST',
+            header : {
+                "Content-Type" : "application/json"
+            },
+            body :JSON.stringify(dataToSend)
+      })
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agent Property</title>
+    <link rel="stylesheet" href="/CSS/agentproperty.css">
+</head>
+<body>
+    
+    <header class="header backlayer">
+        <p class="home"><a href="/">AanandBhavan</a></p>
+        <div class="header_set">
+            <p><a href="/">HOME</a></p>
+            <p><a href="/property">EXPLORE HOUSES</a></p>
+            <p><a href="/contact">CONTACT US</a></p>
+        </div>
+    </header>
+    <div class="main_body backlayer">
+        <div class="search">
+            <input type="text" class="search_inp" placeholder="property id">
+            <button class="magnifier" onclick="searchIt()"><img src="/icons/🦆 icon _search normal 1_.svg" alt="">search</button>
+            <div class="list_all">
+                <button class="addproperty" onclick="reback()"><img src="/icons/House.svg"><p>Add property</p></button>
+            </div>
+        </div>
+        <p id="foundings">Found <span style="color: #7cc2ff;"><%=fetch.length%></span> property listings...</p>
+        <hr>
+        <div class="clear">
+            <p>List Of Properties Under Agent ID :<span style="color: #7cc2ff; padding-left: 1rem;"><%=fetch[0].agent_id%></span></p>
+            <button>Clear all</button>
+        </div>
+        <div class="headings" id="after_modifier">
+            <h4 id="property_id">PROPERTY ID</h4>
+            <h4 id="no_of_bedrooms">BEDROOMS</h4>
+            <h4 id="property_type">TYPE</h4>
+            <h4 id="rent_sell">FOR</h4>
+            <h4 class="finisher" id="current_status">STATUS</h4>
+        </div>
+        <div class="property_agent">
+            <%var count = 0;%>
+            <%for(let i = 0  ; i < fetch.length ; i++){%>
+                <%if(count%3){%>
+                    <div class="agent_property">
+                        <h4><%=fetch[i].property_id%></h4>
+                        <h4><%=fetch[i].no_of_bedrooms%></h4>
+                        <h4><%=fetch[i].property_type%></h4>
+                        <h4><%=fetch[i].rent_sell%></h4>
+                        <h4><%=fetch[i].current_status%></h4>
+                    </div>
+                <%}%>
+                <%count++;%>
+            <%}%>
+        </div>
+        <div class="end_stuff">
+            <img src="/icons/Menu Vertical.svg" id="menu">
+            <button class="next_items">
+                <img src="/icons/NEXT.svg" id="next">
+                <img src="/icons/Polygon 7.svg" alt="">
+            </button>
+        </div>
+    </div>
+    <!-- popup page -->
+    <div class="add_popup" id="pop">
+        <header class="pop_header">
+            <img src="/icons/🦆 icon _home_.svg" alt="">
+            <img src="/icons/Line_v.svg" alt="">
+            <p>Enter Property Details</p> 
+            <div class="takeoff" style="background-color: #ffffff; font-size: 2rem; border: none; margin-left: auto;
+            margin-bottom: auto; padding-right: 1rem;" id="cross">&times;</div>
+        </header>
+        <div class="content">
+            <div class="top_tag">
+                <p>Bedrooms*</p>
+                <p>Property For*</p>
+            </div>
+            <div class="selectors">
+                <select class="sec1 text_inputs">
+                    <option value="1" class="opt">1</option>
+                    <option value="2" class="opt">2</option>
+                    <option value="3" class="opt">3</option>
+                    <option value="4" class="opt">4</option>
+                </select>
+                <select class="sec1 text_inputs">
+                    <option value="Rent">Rent</option>
+                    <option value="Sell">Sell</option>
+                </select>
+            </div>
+            <div class="second_tag">
+                <p>Built Year*</p>
+                <p class="sec">Property Type*</p>
+            </div>
+            <div class="selectors">
+                <input type="text" id="date" class="text_inputs">
+                <select class="sec1 text_inputs">
+                    <option value="House">House</option>
+                    <option value="Plot">Plot</option>
+                </select>
+            </div>
+            <p class="tags">Square Feet*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">First Name*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Last Name*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Seller ID*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Price*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Discount*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Phone Number*</p>
+            <input type="text" class="text_inputs">
+            <p class="tags">Address*</p>
+            <input type="text" class="text_inputs" id="Address">
+        </div>
+        <button type="submit" onclick="popupsend()" id="addproperty">
+            submit
+        </button>
+    </div>
+    <script>
+        const myElement = document.querySelector('.takeoff');
+        const remove = document.querySelector('.add_popup');
+        myElement.addEventListener('click', function() {
+            const remove = document.querySelector('.add_popup');
+            remove.id = 'pop'; 
+        });
+        function reback(){
+            remove.removeAttribute('id');
+            const to_stop_pointer = document.querySelector(".backlayer");
+            to_stop_pointer.id = 'torestrict';
+        }
+        function searchIt(){
+            var data_to_send = {};
+            var search_event = document.querySelector('.search_inp').value;
+            data_to_send["property_id"] = search_event;
+            fetch("/agent/agentproperty" , {
+                method : 'POST',
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body :JSON.stringify(data_to_send)
+            })
+            .then(res => res.json())
+            .then(responseData => {
+                if(responseData != " ") {
+                    let newData = responseData[0];
+                    Object.entries(newData).forEach(([key, value]) => {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            element.innerHTML = value;
+                            var none_element = document.querySelector('.property_agent');
+                            if (element) {
+                                none_element.id = 'starter';
+                            }
+                        }
+                    });
+                }
+            })
+            .catch((error) =>{
+                console.log("Error:", error)
+            });
+        }
+
+        function popupsend() {
+            let flag = 0;
+            let property_data = [];
+            let addressValue = document.querySelectorAll('.text_inputs'); 
+            for(let i = 0 ; i < addressValue.length ; i++){
+                if(addressValue[i].value !== ""){
+                    flag++;
+                }
+                property_data[i] = addressValue[i].value;
+            }
+            if(flag !== 12){
+                alert("Please fill up completely!!");
+            }
+            else {
+                let adding_data = {};
+                adding_data["data"] = property_data;
+                fetch('/agent/agentproperty/popup' , {
+                    method : 'POST',
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body :JSON.stringify(adding_data)
+                })
+                .then(res => res.json())
+                .then(responseData => {
+                    if(responseData !== "" && responseData.data === "fine"){
+                        console.log(responseData.data);
+                        alert("property added successfully!!");
+                        window.location.href = '/agent/agentproperty';
+                    }else {
+                        alert("Found Data Inaccuracy!!");
+                    }
+                })
+                .catch((error) =>{
+                    console.log("Error:", error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

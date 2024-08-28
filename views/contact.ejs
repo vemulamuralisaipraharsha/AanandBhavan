@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="CSS/contact.css">
+</head>
+<body>  
+    <header class="header">
+        <p class="home"><a href="/">AanandBhavan</a></p>
+        <div class="header_set">
+            <p><a href="/">HOME</a></p>
+            <p><a href="/property">EXPLORE HOUSES</a></p>
+            <p><a href="/contact">CONTACT US</a></p>
+        </div>
+    </header>
+    <div class="container">
+        <div class="item1">
+            <div class="contact">
+                <h1>contact form</h1>
+            </div>
+            <p>Name</p>
+            <input type="text" class="ip" id="name">
+            <p>Email</p>
+            <input type="text" class="ip" id="email">
+            <p>Message</p>
+            <input type="text" class="ip" id="msg">
+            <div class="terms">
+                <input type="checkbox">
+                <p>I accept the <span style="color: rgb(255, 89, 89);">Terms of Service</span></p>
+            </div>
+            <div class="submit" onclick="send()"><p>submit</p></div>
+        </div>
+        <div class="item2">
+            <div class="call">
+                <h2>CALL US</h2>
+                <p>+1 (234) 555-666</p>
+                <p>+1 (234) 444-777</p>
+            </div>
+            <div class="location">
+                <h2>LOCATION</h2>
+                <p>IIITG,IT-PARK,BONGORA,ASSAM</p>
+            </div>
+            <div class="service">
+                <h2>OUR TOP SERVICES</h2>
+                <p>Buy Houses</p>
+                <p>Rent Houses</p>
+                <p>Sell Houses</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function send(){
+            var toSend = {
+                data :document.getElementById("name").value,
+                email : document.getElementById("email").value,
+                message : document.getElementById("msg").value,
+            };
+            console.log(toSend);
+            var email = toSend.email;
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            if(isValidEmail(email) === false){
+                alert("Enter valid email!!!");
+            }else {
+                fetch("/contact" , {
+                    method : 'POST',
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body :JSON.stringify(toSend)
+                })
+                .then(window.location.href = '/contact')
+                .catch((error) =>{
+                    window.location.href = '/contact',
+                    console.log("Error:", error)
+                });
+            }
+        };
+    </script>
+</body>
+</html>

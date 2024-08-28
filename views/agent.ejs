@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Agent</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/CSS/agent_styles.css">
+</head>
+
+
+
+
+<body>
+    <header class="header">
+        <p class="home"><a href="/">AanandBhavan</a></p>
+        <div class="header_set">
+            <p><a href="/">HOME</a></p>
+            <p><a href="/property">EXPLORE HOUSES</a></p>
+            <p><a href="/contact">CONTACT US</a></p>
+        </div>
+    </header>
+    <div class="row rotha">  
+        <div class="col-md-6" id="add_space">
+            <div class = "row" id="non_header_section" style="background-color: #ffffff; border-bottom: 2px solid; border-color: #b9b9b9;">
+                <%var sex;%>
+                <%if(agent_data[0].gender === 'm'){%>
+                    <%sex = '/icons/man.png';%>
+                <%}else{%>
+                    <%sex = '/icons/women.png';%>
+                <%}%>
+                <img src="<%=sex%>" class = "agent_img col-mid-7"> 
+            </div>
+        </div>  
+        <div class = "col-md-6 total_data">
+            <!-- add page refence here -->
+            <div id="agentproperty">
+                <p>Navigate through the properties here &rarrlp;</p>
+                <a href="/agent/agentproperty"><img src="/icons/House.png"  class="agent_property"></a>
+            </div>
+            <div class = "row">
+                <%var data = agent_data[0].agent_id %>
+                <h5><span class = "headings">Agent ID </span><%= data%></h5>
+            </div>
+            <div class = "row">
+                <% data = agent_data[0].f_name %>
+                <h5><span class = "headings">First Name </span><input  class = "bord" type="text" id = "D1" name = "f_name" placeholder="<%= data %>"></h5>
+            </div>
+            <div class = "row">
+                <% data = agent_data[0].s_name %>
+                <h5><span class = "headings">Second Name </span><input  class = "bord" type="text" id = "D2" name = "s_name" placeholder="<%= data %>"></h5>
+            </div>
+
+            <div class = "row">
+                <% data = agent_data[0].phone_number %>
+                <h5><span class = "headings">Phone Number </span><input class = "bord" type="text" id = "D3" name = "phone_number" placeholder="<%= data %>"></h5>
+            </div>
+            <div class = "row">
+                <% data = agent_data[0].area %>
+                <h5><span class = "headings">Area </span><input type="text" id = "D4" class = "bord" name = "area" placeholder="<%= data %>"></h5>
+            </div>
+            <div class = "row">
+                <% data = agent_data[0].email %>
+                <h5><span class = "headings">Email </span><input type="text" id = "D5" class = "bord" name = "email" placeholder="<%= data %>"></h5>
+            </div>
+            <div class = "row" >
+                <p><% data = agent_data[0].password %></p>
+                <h5><span class = "headings">Password </span><input type="text" id = "D6" class = "bord" name = "password" placeholder="<%= data %>"></h5>
+            </div>
+            <button class = "todo" onclick = "explode()"  id = "sub" ><em>SUBMIT</em></button>
+        </div>
+    </div>  
+    <script>
+        var changing_data = {}; 
+        function explode(){
+            var count = 0;
+            for(var i = 1 ; i < 7 ; i++){
+                var iter = "D"+i;
+                const input_data = document.getElementById(iter).value;
+                const name_data = document.getElementById(iter).getAttribute('name');
+                changing_data[name_data] = input_data;
+                if(input_data === ""){
+                    count++;
+                }
+            }
+            if(count === 6){
+                alert("Insert some data to SUBMIT!!");
+            }else{
+                fetch("/login/agent" , {
+                    method : 'POST',
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body :JSON.stringify(changing_data)
+                })
+                .then(res => res.json())
+                .then(responseData => {
+                    console.log( "dataget:" ,responseData);
+                    if(responseData['wrong'] === 'email'){
+                        alert('Invalid email !!');
+                    }else if(responseData['wrong'] === 'phone'){
+                        alert('Invalid Phone Number');
+                    }else{
+                    alert("Data Updated Successfully!!");
+                    window.location.href = '/login/agent';
+                    }
+                })
+                .catch((error) =>{
+                    window.location.href = '/login/agent',
+                    console.log("Error:", error)
+                });
+            }
+        }
+    </script>
+</body>
+</html>

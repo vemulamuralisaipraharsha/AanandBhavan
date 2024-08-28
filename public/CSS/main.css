@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(255, 244, 244);
+}
+
+.homemain {
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 45vh;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    height: 10%;
+    width: 100%;
+    background-color: rgba(79, 79, 79, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.header h1 a{
+    letter-spacing: 0.2rem;
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 20%;
+}
+
+.header h1 {
+    font-weight: 100;
+    margin-top: 1rem;
+}
+
+.header_content {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.7rem;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.header_content p a{
+    letter-spacing: 0.2rem;
+    text-decoration: none;
+    font-weight: 100;
+    color: #ffffff;
+}
+.header_content p a:hover{
+    text-decoration: underline;
+}
+.header_content img{
+    height: 5vh;
+    cursor: pointer;
+
+}
+.header_content img:hover{
+    border-bottom: 4px solid;
+    border-color: #ffffff;
+    border-radius: 1px;
+}
+
+
+.cotes {
+    top: 7rem;
+    left: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    max-width: fit-content;
+}
+
+.cotes h1{
+    padding-bottom: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    color: #ffffff;
+    font-weight: 200;
+}
+
+.note {
+    left: 25%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background-color: #ffffff;
+    z-index: 2;
+    max-width: 50%;
+    height: 15vh;
+    top: 15vh;
+    border: 5px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    border-bottom: none;
+    padding-top: 1rem;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.note h2{
+    margin-bottom: 0;
+    font-weight: 100;
+}
+.note p{
+    color: rgb(108, 108, 108);
+    margin-bottom: 1.5rem;
+    font-size: small;
+    margin-top: 0;
+}
+
+.todo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 100%;
+    top: 20vh;
+    height: 40vh;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.todo h1 {
+    margin-left: 40%;
+    font-weight: 100;
+}
+
+.instructions {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.instructions img{
+    width: 4vw;
+}
+.instruction_text {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.new {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#back_shadow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#back_shadow:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.make_them_explore {
+    border-radius: 5px;
+    left: 8%;
+    display: flex;
+    align-items: center;
+    top: 30vh;
+    z-index: 3;
+    position: relative;
+    margin-bottom: 0;
+    max-width: 80%;
+    margin-bottom: 20rem;
+}
+
+.make_them_explore img{
+    position: relative;
+    transform: translate(20% , 0%);
+    margin-left: 2rem;
+    z-index: 6;
+    border-radius: 4px;
+    max-width: 40%;
+    margin-bottom: 0;
+}
+
+#exp_contant {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transform: translate(-15% , 0);
+    position: relative;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    z-index: 3;
+    height: 50vh;
+    padding-left: 20%; 
+}
+
+#grey {
+    color: rgb(141, 141, 141);
+}
+
+#exp_contant h1 {
+    font-weight: lighter;
+}
+
+#exp_contant p {
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#opening {
+    font-size: 200%;
+    font-weight: 100;
+}
+
+#equal {
+    font-size: larger;
+    color: rgb(98, 98, 98);
+}
+
+#exp_contant button {   
+    padding: 1rem;
+    max-width: 40%;
+    background-color: #A2E3FF;
+    border-radius: 4px;
+    border: none;
+    
+}
+
+#exp_contant button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.show_stoppers_content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 60%;
+    margin-right: auto;
+}
+.show_stoppers {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    z-index: 2;
+    position: relative;
+    width: 90%;
+    padding-left: 10%;
+}
+
+.show_stoppers img {
+    width: 10vw;
+    margin-right: 15%;
+}
+
+.faceoff {
+    margin-top: 2rem;
+    border-top: 2px solid;
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 5px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(44, 44, 44);
+    margin-top: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.about h1{
+    font-weight: 100;
+}
+
+.about_left {
+    max-width: 50%;
+    margin-right: 15%;
+}
+
+.about h1 {
+    color: #ffffff;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    max-width: 75%;
+}
